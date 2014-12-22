@@ -55,3 +55,10 @@ app/console server:start
 Go to the API documentation at http://127.0.0.1:8000/api/doc/ and try out the sandboxes:
 
 ![Alt screenshot](https://raw.githubusercontent.com/duplamatyi/simple-symfony-chat/master/web/example/simple_chat.png)
+
+Or use curl from a terminal:
+
+```
+curl -H "Content-Type: application/json" -d '{"author":"1","recipient":"2","content":"Hello World!"}' http://127.0.0.1:8000/message/send
+curl -H "Content-Type: application/json" http://127.0.0.1:8000/message/get-messages?recipient=2
+```
