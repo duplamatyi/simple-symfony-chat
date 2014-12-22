@@ -26,8 +26,8 @@ class MessageController extends FOSRestController
      *
      * @Route("/send")
      * @Method({"POST"})
-     * @Rest\RequestParam(name="author_id", requirements="\d+", description="The id of the author.")
-     * @Rest\RequestParam(name="recipient_id", requirements="\d+", description="The id of the recipient.")
+     * @Rest\RequestParam(name="author", requirements="\d+", description="The id of the author.")
+     * @Rest\RequestParam(name="recipient", requirements="\d+", description="The id of the recipient.")
      * @Rest\RequestParam(name="content", description="The content of the message.")
      * @ApiDoc(
      *  statusCodes={
