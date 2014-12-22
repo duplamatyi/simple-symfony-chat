@@ -1,0 +1,8 @@
+app:
+    resource: @ChatBundle/Controller
+    type:     annotation
+    prefix:   /message
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
