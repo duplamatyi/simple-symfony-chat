@@ -26,8 +26,8 @@ class MessageController extends FOSRestController
      *
      * @Route("/send")
      * @Method({"POST"})
-     * @Rest\RequestParam(name="author", requirements="\d+", description="The id of the author.")
-     * @Rest\RequestParam(name="recipient", requirements="\d+", description="The id of the recipient.")
+     * @Rest\RequestParam(name="author_id", requirements="\d+", description="The id of the author.")
+     * @Rest\RequestParam(name="recipient_id", requirements="\d+", description="The id of the recipient.")
      * @Rest\RequestParam(name="content", description="The content of the message.")
      * @ApiDoc(
      *  statusCodes={
@@ -39,7 +39,7 @@ class MessageController extends FOSRestController
      */
     public function sendAction(ParamFetcher $paramFetcher)
     {
-        $params = $paramFetcher->all();
+        $params = $this->transformSendMessagesParams($paramFetcher);
         $message = new Message();
         $form = $this->createForm(new MessageType(), $message);
         $form->submit($params);
@@ -67,7 +67,7 @@ class MessageController extends FOSRestController
      * @Method({"GET"})
      *
      * @Rest\View(serializerGroups={"received"})
-     * @Rest\QueryParam(name="recipient", requirements="\d+", description="The id of the recipient.", strict=true)
+     * @Rest\QueryParam(name="recipient_id", requirements="\d+", description="The id of the recipient.", strict=true)
      * @ApiDoc(
      *  resource=true,
      *  output={
@@ -83,11 +83,26 @@ class MessageController extends FOSRestController
      */
     public function getMessagesAction(ParamFetcher $paramFetcher)
     {
-        $recipient = $paramFetcher->get('recipient');
+        $recipient_id = $paramFetcher->get('recipient_id');
         $messages = $this->getDoctrine()
             ->getRepository('ChatBundle:Message')
-            ->findMessagesByRecipient($recipient);
+            ->findMessagesByRecipient($recipient_id);
 
         return $messages;
+    }
+
+    /**
+     * Prepares the request params to be submitted to the Form.
+     *
+     * @param ParamFetcher $paramFetcher
+     * @return array
+     */
+    private function transformSendMessagesParams(ParamFetcher $paramFetcher)
+    {
+        return array(
+            'author' => $paramFetcher->get('author_id'),
+            'recipient' => $paramFetcher->get('recipient_id'),
+            'content' => $paramFetcher->get('content'),
+        );
     }
 }

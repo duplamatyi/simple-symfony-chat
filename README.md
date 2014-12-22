@@ -59,6 +59,6 @@ Go to the API documentation at http://127.0.0.1:8000/api/doc/ and try out the sa
 Or use curl from a terminal:
 
 ```
-curl -H "Content-Type: application/json" -d '{"author":"1","recipient":"2","content":"Hello World!"}' http://127.0.0.1:8000/message/send
-curl -H "Content-Type: application/json" http://127.0.0.1:8000/message/get-messages?recipient=2
+curl -H "Content-Type: application/json" -d '{"author_id":"1","recipient_id":"2","content":"Hello World!"}' http://127.0.0.1:8000/message/send
+curl -H "Content-Type: application/json" http://127.0.0.1:8000/message/get-messages?recipient_id=2
 ```

@@ -161,7 +161,7 @@ class Message
 
     /**
      * @Serializer\VirtualProperty
-     * @Serializer\SerializedName("author")
+     * @Serializer\SerializedName("author_id")
      * @Serializer\Type("string")
      * @Serializer\Groups({"received"})
      */

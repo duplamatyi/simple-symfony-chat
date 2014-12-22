@@ -61,7 +61,7 @@ class MessageControllerTest extends ChatTestCase
     {
         $server = $this->getServerParams();
 
-        static::$client->request('GET', '/message/get-messages', array('recipient' => 2), array(), $server);
+        static::$client->request('GET', '/message/get-messages', array('recipient_id' => 2), array(), $server);
 
         $status = static::$client->getResponse()->getStatusCode();
         $content = static::$client->getResponse()->getContent();
@@ -69,7 +69,7 @@ class MessageControllerTest extends ChatTestCase
 
         $this->assertEquals($status, Codes::HTTP_OK);
         $this->assertEquals(count($content_array), 1);
-        $this->assertEquals($content_array[0]['author'], '1');
+        $this->assertEquals($content_array[0]['author_id'], '1');
         $this->assertEquals($content_array[0]['author_username'], 'user1');
         $this->assertEquals($content_array[0]['content'], 'Hello World!');
     }
@@ -99,8 +99,8 @@ class MessageControllerTest extends ChatTestCase
     private function createRawContent($author, $recipient, $message)
     {
         $content = new \stdClass();
-        $content->author = $author;
-        $content->recipient = $recipient;
+        $content->author_id = $author;
+        $content->recipient_id = $recipient;
         $content->content = $message;
 
         return json_encode($content);
