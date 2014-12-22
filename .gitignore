@@ -27,8 +27,8 @@
 /composer.phar
 
 # DB files
-/db
+/db/*
 !db/.gitkeep
 
 # PHPStorm
-/idea
+/.idea
