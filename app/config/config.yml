@@ -83,6 +83,8 @@ fos_rest:
     param_fetcher_listener: force
     routing_loader:
         default_format: json
+
+    body_listener: true
     view:
         view_response_listener: force
     format_listener:
@@ -91,12 +93,4 @@ fos_rest:
             - { path: '^/', priorities: ['json'], fallback_format: json, prefer_extension: false }
     service:
         serializer: jms_serializer.serializer
-#fos_rest:
-#    view:
-#        view_response_listener: force
-#    param_fetcher_listener: true
-#    format_listener:
-#    #     default_priorities: ['json', 'xml', '*/*']
-#        fallback_format: json
-#    service:
-#        view_handler:    medipim.apiv1bundle.fos_rest.view_handler
+
