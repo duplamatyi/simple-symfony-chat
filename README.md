@@ -53,3 +53,5 @@ app/console server:start
 ```
 
 Go to the API documentation at http://127.0.0.1:8000/api/doc/ and try out the sandboxes:
+
+![alt tag](https://www.dropbox.com/s/tmj67nurc4hedyr/simple_chat.png?dl=0)
