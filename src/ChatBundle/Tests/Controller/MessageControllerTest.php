@@ -69,7 +69,8 @@ class MessageControllerTest extends ChatTestCase
 
         $this->assertEquals($status, Codes::HTTP_OK);
         $this->assertEquals(count($content_array), 1);
-        $this->assertEquals($content_array[0]['author'], 'user1');
+        $this->assertEquals($content_array[0]['author'], '1');
+        $this->assertEquals($content_array[0]['author_username'], 'user1');
         $this->assertEquals($content_array[0]['content'], 'Hello World!');
     }
 

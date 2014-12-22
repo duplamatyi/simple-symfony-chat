@@ -165,8 +165,19 @@ class Message
      * @Serializer\Type("string")
      * @Serializer\Groups({"received"})
      */
+    public function author_id()
+    {
+        return $this->author->getId();
+    }
+
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("author_username")
+     * @Serializer\Type("string")
+     * @Serializer\Groups({"received"})
+     */
     public function author_username()
     {
-        return $this->author->__toString();
+        return $this->author->getUsername();
     }
 }
